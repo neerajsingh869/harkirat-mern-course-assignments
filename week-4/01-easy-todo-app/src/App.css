@@ -1,0 +1,63 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-size:16px;
+    /* outline:1px solid red; */
+}
+
+/* general styles */
+i, button{
+    cursor: pointer;
+}
+
+.ele-center {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.dis-flex {
+    display:flex;
+}
+
+.flexd-col {
+    flex-direction: column;
+}
+
+.jc-around {
+    justify-content: space-around;
+}
+
+.jc-between {
+    justify-content: space-between;
+}
+
+.ai-center {
+    align-items:center;
+}
+
+/* styles for main element */
+main {
+    height:100vh;
+    width:100vw;
+}
+
+/* styles for todoApp container element */
+#todoApp-container {
+    min-height:30%;
+    width:40%;
+    background-color: #AEDEFC;
+    box-shadow:0px 0px 2px 8px #75C2F6;
+    border-radius:0.5rem;
+}
+
+/* styles for todoApp header element */
+#todoApp-header {
+    padding:10px 0px;
+}
+
+#todoApp-header > p {
+    font-size:1.75rem;
+    font-weight:bold;
+}

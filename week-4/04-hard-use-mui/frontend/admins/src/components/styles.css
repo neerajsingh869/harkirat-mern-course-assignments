@@ -1,0 +1,33 @@
+/* Main styles */
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.full-container {
+    width: 100vw;
+    height:calc(100vh - 64px);
+}
+
+.ele-center {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    height:calc(100vh - 64px);
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.form-course-wrapper {
+    width: 95vw;
+    height: 60vh;
+    margin: auto;
+    margin-top: -25vh;
+    justify-content:space-around;
+}
