@@ -2,6 +2,10 @@ import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 const SECRET = 'SECr3t';  // This should be in an environment variable in a real application
 
+interface UserToken {
+  id: string
+}
+
 const authenticateJwt = (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
   if (authHeader) {
@@ -10,7 +14,7 @@ const authenticateJwt = (req: Request, res: Response, next: NextFunction) => {
       if (err) {
         return res.sendStatus(403);
       }
-      req.userId = user.id;
+      req.headers.userId = (user as UserToken).id;
       next();
     });
   } else {

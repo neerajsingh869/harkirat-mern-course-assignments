@@ -7,7 +7,7 @@ const router = express.Router();
 router.post('/todos', authenticateJwt, (req: Request, res: Response) => {
   const { title, description } = req.body;
   const done = false;
-  const userId = req.userId;
+  const userId = req.headers.userId;
 
   const newTodo = new Todo({ title, description, done, userId });
 
@@ -22,7 +22,7 @@ router.post('/todos', authenticateJwt, (req: Request, res: Response) => {
 
 
 router.get('/todos', authenticateJwt, (req: Request, res: Response) => {
-  const userId = req.userId;
+  const userId = req.headers.userId;
 
   Todo.find({ userId })
     .then((todos) => {
@@ -35,7 +35,7 @@ router.get('/todos', authenticateJwt, (req: Request, res: Response) => {
 
 router.patch('/todos/:todoId/done', authenticateJwt, (req: Request, res: Response) => {
   const { todoId } = req.params;
-  const userId = req.userId;
+  const userId = req.headers.userId;
 
   Todo.findOneAndUpdate({ _id: todoId, userId }, { done: true }, { new: true })
     .then((updatedTodo) => {
