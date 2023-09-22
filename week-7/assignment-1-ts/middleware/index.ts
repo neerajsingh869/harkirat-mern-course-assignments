@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken';
-import { Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 const SECRET = 'SECr3t';  // This should be in an environment variable in a real application
 
-const authenticateJwt = (req, res, next) => {
+const authenticateJwt = (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
   if (authHeader) {
     const token = authHeader.split(' ')[1];

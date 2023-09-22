@@ -1,9 +1,10 @@
 import express from 'express';
+import { Request, Response } from 'express';
 import { authenticateJwt, SECRET } from '../middleware/index';
 import { Todo } from '../db';
 const router = express.Router();
 
-router.post('/todos', authenticateJwt, (req, res) => {
+router.post('/todos', authenticateJwt, (req: Request, res: Response) => {
   const { title, description } = req.body;
   const done = false;
   const userId = req.userId;
@@ -20,7 +21,7 @@ router.post('/todos', authenticateJwt, (req, res) => {
 });
 
 
-router.get('/todos', authenticateJwt, (req, res) => {
+router.get('/todos', authenticateJwt, (req: Request, res: Response) => {
   const userId = req.userId;
 
   Todo.find({ userId })
@@ -32,7 +33,7 @@ router.get('/todos', authenticateJwt, (req, res) => {
     });
 });
 
-router.patch('/todos/:todoId/done', authenticateJwt, (req, res) => {
+router.patch('/todos/:todoId/done', authenticateJwt, (req: Request, res: Response) => {
   const { todoId } = req.params;
   const userId = req.userId;
 

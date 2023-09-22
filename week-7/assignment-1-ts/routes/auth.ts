@@ -1,10 +1,11 @@
 import jwt from 'jsonwebtoken';
 import express from 'express';
+import { Request, Response } from 'express';
 import { authenticateJwt, SECRET } from '../middleware/';
 import { User } from '../db';
 const router = express.Router();
 
-  router.post('/signup', async (req, res) => {
+  router.post('/signup', async (req: Request, res: Response) => {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
     if (user) {
@@ -17,7 +18,7 @@ const router = express.Router();
     }
   });
   
-  router.post('/login', async (req, res) => {
+  router.post('/login', async (req: Request, res: Response) => {
     const { username, password } = req.body;
     const user = await User.findOne({ username, password });
     if (user) {
@@ -28,7 +29,7 @@ const router = express.Router();
     }
   });
 
-    router.get('/me', authenticateJwt, async (req, res) => {
+    router.get('/me', authenticateJwt, async (req: Request, res: Response) => {
       const user = await User.findOne({ _id: req.userId });
       if (user) {
         res.json({ username: user.username });
