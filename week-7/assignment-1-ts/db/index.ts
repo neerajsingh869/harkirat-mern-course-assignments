@@ -1,19 +1,31 @@
 import mongoose from 'mongoose';
 
-const userSchema = new mongoose.Schema({
+interface UserInterface {
+    username?: string;
+    password?: string;
+}
+
+const userSchema = new mongoose.Schema<UserInterface>({
     username: String,
     password: String,
 });
 
-const todoSchema = new mongoose.Schema({
+interface TodoInterface {
+    title?: string;
+    description?: string;
+    done?: boolean;
+    userId?: string;
+}
+
+const todoSchema = new mongoose.Schema<TodoInterface>({
     title: String,
     description: String,
     done: Boolean,
     userId: String,
 });
 
-const User = mongoose.model('User', userSchema);
-const Todo = mongoose.model('Todo', todoSchema);
+const User = mongoose.model<UserInterface>('User', userSchema);
+const Todo = mongoose.model<TodoInterface>('Todo', todoSchema);
 
 export {
     User,
