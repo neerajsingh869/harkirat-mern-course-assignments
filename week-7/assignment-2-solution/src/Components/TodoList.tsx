@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const TodoList = () => {
     let navigate = useNavigate();
-    const [todos, setTodos] = useState<Array<ServerTodoResponse>>([]);
+    const [todos, setTodos] = useState<ServerTodoResponse[]>([]);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const authStateValue = useRecoilValue(authState);
@@ -17,7 +17,7 @@ const TodoList = () => {
                 headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
             });
             // Todo: Create a type for the response that you get back from the server
-            const data: Array<ServerTodoResponse> = await response.json();
+            const data: ServerTodoResponse[] = await response.json();
             setTodos(data);
         };
         getTodos();
